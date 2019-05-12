@@ -1,0 +1,8 @@
+<label>
+  <input
+    type="checkbox"
+    [checked]="todo.isComplete"
+    (change)="emitUpdate(todo)"
+  />
+  {{ todo.text }}
+</label>
