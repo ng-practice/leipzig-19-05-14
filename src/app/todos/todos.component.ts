@@ -11,7 +11,7 @@ export class TodosComponent {
   todos: Todo[];
 
   constructor(private todosService: TodosService) {
-    this.todos = this.todosService.getAll();
+    this.todosService.getAll().subscribe(todos => (this.todos = todos));
   }
 
   show(todo: Todo): void {
@@ -19,12 +19,14 @@ export class TodosComponent {
   }
 
   createTodo(todo: Todo): void {
-    this.todosService.create(todo);
-    this.todos = this.todosService.getAll();
+    this.todosService.create(todo).subscribe(() => this.getAll());
   }
 
   deleteTodo(todo: Todo): void {
-    this.todosService.delete(todo);
-    this.todos = this.todosService.getAll();
+    this.todosService.delete(todo).subscribe(() => this.getAll());
+  }
+
+  getAll(): void {
+    this.todosService.getAll().subscribe(todos => (this.todos = todos));
   }
 }

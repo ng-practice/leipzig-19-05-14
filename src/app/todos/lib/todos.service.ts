@@ -1,39 +1,28 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Todo } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodosService {
-  todos: Todo[] = [
-    {
-      text: 'Prepare 1st Workshop',
-      isComplete: true,
-      createdAt: new Date()
-    },
-    {
-      text: 'Prepare 2st Workshop',
-      isComplete: false
-    },
-    {
-      text: 'Prepare 3st Workshop',
-      isComplete: true
-    },
-    {
-      text: 'Prepare 4st Workshop',
-      isComplete: false
-    }
-  ];
+  private endpoint = 'http://localhost:3000/tasks';
 
-  getAll(): Todo[] {
-    return this.todos;
+  constructor(private http: HttpClient) {}
+
+  getAll(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(this.endpoint);
   }
 
-  create(todo: Todo): void {
-    this.todos = [...this.todos, todo];
+  create(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>(this.endpoint, {
+      guid: Math.random().toString(36),
+      ...todo
+    });
   }
 
-  delete(todo: Todo): void {
-    this.todos = this.todos.filter(t => t.text !== todo.text);
+  delete(todo: Todo): Observable<Todo> {
+    return this.http.delete<Todo>(`${this.endpoint}/${todo.guid}`);
   }
 }
