@@ -14,11 +14,11 @@ export class TodosComponent {
     this.todos = this.todosService.getAll();
   }
 
-  show(todo) {
+  show(todo: Todo): void {
     alert(todo.text);
   }
 
-  deleteTodo(todo) {
+  deleteTodo(todo: Todo): void {
     this.todos = this.todos.filter(t => t.text !== todo.text);
   }
 }
