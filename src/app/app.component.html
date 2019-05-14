@@ -8,9 +8,4 @@
   />
 </div>
 
-<app-todo
-  [todo]="todo"
-  (update)="show($event)"
-  (delete)="deleteTodo($event)"
-  *ngFor="let todo of todos"
-></app-todo>
+<app-todos></app-todos>

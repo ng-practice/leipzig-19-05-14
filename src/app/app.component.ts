@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Todo } from './todos/models';
 
 @Component({
   selector: 'app-root',
@@ -8,32 +7,4 @@ import { Todo } from './todos/models';
 })
 export class AppComponent {
   title = 'solid-foundations 1';
-
-  todos: Todo[] = [
-    {
-      text: 'Prepare 1st Workshop',
-      isComplete: true,
-      createdAt: new Date()
-    },
-    {
-      text: 'Prepare 2st Workshop',
-      isComplete: false
-    },
-    {
-      text: 'Prepare 3st Workshop',
-      isComplete: true
-    },
-    {
-      text: 'Prepare 4st Workshop',
-      isComplete: false
-    }
-  ];
-
-  show(todo) {
-    alert(todo.text);
-  }
-
-  deleteTodo(todo) {
-    this.todos = this.todos.filter(t => t.text !== todo.text);
-  }
 }
