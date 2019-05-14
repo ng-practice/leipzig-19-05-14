@@ -10,8 +10,8 @@ export class TodoComponent {
   // [todo]="todo"
   @Input() todo: Todo;
   // (update)="fn($event)"
-  @Output() update = new EventEmitter();
-  @Output() delete = new EventEmitter();
+  @Output() update = new EventEmitter<Todo>();
+  @Output() delete = new EventEmitter<Todo>();
 
   emitUpdate(todo: Todo) {
     this.update.emit(todo);
