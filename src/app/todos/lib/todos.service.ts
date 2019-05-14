@@ -28,4 +28,12 @@ export class TodosService {
   getAll(): Todo[] {
     return this.todos;
   }
+
+  create(todo: Todo): void {
+    this.todos = [...this.todos, todo];
+  }
+
+  delete(todo: Todo): void {
+    this.todos = this.todos.filter(t => t.text !== todo.text);
+  }
 }

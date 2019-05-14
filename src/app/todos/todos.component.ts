@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Todo } from './models';
 import { TodosService } from './lib/todos.service';
 
@@ -18,7 +18,13 @@ export class TodosComponent {
     alert(todo.text);
   }
 
+  createTodo(todo: Todo): void {
+    this.todosService.create(todo);
+    this.todos = this.todosService.getAll();
+  }
+
   deleteTodo(todo: Todo): void {
-    this.todos = this.todos.filter(t => t.text !== todo.text);
+    this.todosService.delete(todo);
+    this.todos = this.todosService.getAll();
   }
 }
