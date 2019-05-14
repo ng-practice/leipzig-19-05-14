@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from './models';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'solid-foundations 1';
 
-  todos = [
+  todos: Todo[] = [
     {
       text: 'Prepare 1st Workshop',
-      isComplete: true
+      isComplete: true,
+      createdAt: new Date()
     },
     {
       text: 'Prepare 2st Workshop',

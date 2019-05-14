@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Todo } from '../models';
 
 @Component({
   selector: 'app-todo',
@@ -7,16 +8,16 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TodoComponent {
   // [todo]="todo"
-  @Input() todo;
+  @Input() todo: Todo;
   // (update)="fn($event)"
   @Output() update = new EventEmitter();
   @Output() delete = new EventEmitter();
 
-  emitUpdate(todo) {
+  emitUpdate(todo: Todo) {
     this.update.emit(todo);
   }
 
-  emitDelete(todo) {
+  emitDelete(todo: Todo) {
     this.delete.emit(todo);
   }
 }

@@ -5,5 +5,6 @@
     (change)="emitUpdate(todo)"
   />
   {{ todo.text }}
+  <small *ngIf="todo.createdAt">{{ todo.createdAt }}</small>
 </label>
 <button (click)="emitDelete(todo)">DELETE</button>
