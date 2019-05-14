@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from './models';
+import { TodosService } from './lib/todos.service';
 
 @Component({
   selector: 'app-todos',
@@ -7,25 +8,11 @@ import { Todo } from './models';
   styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent {
-  todos: Todo[] = [
-    {
-      text: 'Prepare 1st Workshop',
-      isComplete: true,
-      createdAt: new Date()
-    },
-    {
-      text: 'Prepare 2st Workshop',
-      isComplete: false
-    },
-    {
-      text: 'Prepare 3st Workshop',
-      isComplete: true
-    },
-    {
-      text: 'Prepare 4st Workshop',
-      isComplete: false
-    }
-  ];
+  todos: Todo[];
+
+  constructor(private todosService: TodosService) {
+    this.todos = this.todosService.getAll();
+  }
 
   show(todo) {
     alert(todo.text);
