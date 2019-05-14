@@ -15,7 +15,7 @@ export class TodosComponent {
   }
 
   show(todo: Todo): void {
-    alert(todo.text);
+    this.todosService.complete(todo).subscribe(() => this.getAll());
   }
 
   createTodo(todo: Todo): void {

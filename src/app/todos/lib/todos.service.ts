@@ -22,6 +22,10 @@ export class TodosService {
     });
   }
 
+  complete(todo: Todo) {
+    return this.http.put(`${this.endpoint}/complete/${todo.guid}`, todo);
+  }
+
   delete(todo: Todo): Observable<Todo> {
     return this.http.delete<Todo>(`${this.endpoint}/${todo.guid}`);
   }
