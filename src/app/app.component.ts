@@ -8,21 +8,30 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'solid-foundations 1';
 
-  todos = [{
-    text: 'Prepare 1st Workshop',
-    isComplete: true
-  }, {
-    text: 'Prepare 2st Workshop',
-    isComplete: false
-  }, {
-    text: 'Prepare 3st Workshop',
-    isComplete: true
-  }, {
-    text: 'Prepare 4st Workshop',
-    isComplete: false
-  }];
+  todos = [
+    {
+      text: 'Prepare 1st Workshop',
+      isComplete: true
+    },
+    {
+      text: 'Prepare 2st Workshop',
+      isComplete: false
+    },
+    {
+      text: 'Prepare 3st Workshop',
+      isComplete: true
+    },
+    {
+      text: 'Prepare 4st Workshop',
+      isComplete: false
+    }
+  ];
 
   show(todo) {
     alert(todo.text);
+  }
+
+  deleteTodo(todo) {
+    this.todos = this.todos.filter(t => t.text !== todo.text);
   }
 }
