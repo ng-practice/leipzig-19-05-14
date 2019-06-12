@@ -15,9 +15,7 @@ export class TodosComponent implements OnInit, OnDestroy {
   constructor(private todosService: TodosService) {}
 
   ngOnInit(): void {
-    this.sink.add(
-      this.todosService.getAll().subscribe(todos => (this.todos = todos))
-    );
+    this.getAll();
   }
 
   ngOnDestroy(): void {
